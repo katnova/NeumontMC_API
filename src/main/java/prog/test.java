@@ -10,7 +10,6 @@ public class test {
     public static void main(String[] args){
         NAPI napi = new NAPI();
         ArrayList<User> arr;
-        System.out.println(napi.getJSONBefhelsterung().getApiBefhelsterung().getAPIRemotes().toString());
         try {
             arr = napi.getUserArrayList();
             for (User i : arr)

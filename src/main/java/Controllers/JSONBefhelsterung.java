@@ -54,10 +54,26 @@ public class JSONBefhelsterung {
         return jsonObject.getJSONArray(key);
     }
 
+    /**
+     * Take jsonObject, extract array based on key, and parse to an arraylist of User.
+     *
+     * @param jsonObject a vaild json object containing a key of vaild JSON that can be parsed to ArrayList<User>.
+     * @param key        key to look for to build ArrayList<User> off.
+     * @return ArrayList<User> of extracted users from jsonObject.
+     * * @throws JSONException is JSON is malformed or becomes malformed.
+     */
     public ArrayList<User> parseJSONObjectToUserArrayList(JSONObject jsonObject, String key) throws JSONException {
         return parseJSONToUserArray(false, null, jsonObject, key);
     }
 
+    /**
+     * Take jsonArray, extract Users based on key, and parse to an arraylist of User.
+     *
+     * @param jsonArray a vaild json object containing a key of vaild JSON that can be parsed to ArrayList<User>.
+     * @param key       key to look for to build ArrayList<User> off.
+     * @return ArrayList<User> of extracted users from jsonArray.
+     * * @throws JSONException is JSON is malformed or becomes malformed.
+     */
     public ArrayList<User> parseJSONArrayToUserArrayList(JSONArray jsonArray, String key) throws JSONException {
         return parseJSONToUserArray(true, jsonArray, null, key);
     }
@@ -83,7 +99,9 @@ public class JSONBefhelsterung {
                     jsonArray.getJSONObject(i).getString("player_uuid"),
                     jsonArray.getJSONObject(i).getString("username"),
                     null,
-                    0
+                    0,
+                    jsonArray.getJSONObject(i).getDouble("Balance"),
+                    jsonArray.getJSONObject(i).getInt("TotalPlayTime")
             ));
         }
         return returnArray;

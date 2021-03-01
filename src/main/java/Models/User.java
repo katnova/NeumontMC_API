@@ -1,17 +1,40 @@
 package Models;
 
 
+import Controllers.Zeitsterung;
+
 public class User {
+    private final Zeitsterung Zeitsterung = new Zeitsterung();
     private UUID uuid;
     private String username;
     private String nickname;
+    private double Balance;
+    private int TotalPlayTime;
     private int mcmmo_forignKey;
 
-    public User(String uuid, String username, String nickname, int mcmmo_forignKey) {
+    public User(String uuid, String username, String nickname, int mcmmo_forignKey, double Balance, int TotalPlayTime) {
         this.uuid = new UUID(uuid);
         this.username = username;
         this.nickname = nickname;
         this.mcmmo_forignKey = mcmmo_forignKey;
+        this.Balance = Balance;
+        this.TotalPlayTime = TotalPlayTime;
+    }
+
+    public double getBalance() {
+        return Balance;
+    }
+
+    public void setBalance(int balance) {
+        Balance = balance;
+    }
+
+    public int getTotalPlayTime() {
+        return TotalPlayTime;
+    }
+
+    public void setTotalPlayTime(int totalPlayTime) {
+        TotalPlayTime = totalPlayTime;
     }
 
     public UUID getUuid() {
@@ -49,9 +72,12 @@ public class User {
     @Override
     public String toString() {
         return "User Information:" +
-                "\n UUID            : " + uuid.getUUID() +
-                "\n Username        : " + username +
-                "\n Nickname        : " + nickname +
-                "\n mcmmo_forignKey : " + mcmmo_forignKey;
+                "\n UUID (long)               : " + uuid.getUUID() +
+                "\n Username                  : " + username +
+                "\n Nickname                  : " + nickname +
+                "\n Total Play Time (D:H:M:S) : " + Zeitsterung.convertMillisToStdDHMSFormat(TotalPlayTime) +
+                "\n Balance ($)               : " + Balance +
+                "\n mcmmo_forignKey           : " + mcmmo_forignKey;
     }
+
 }

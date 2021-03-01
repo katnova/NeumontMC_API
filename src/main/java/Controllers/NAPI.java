@@ -13,6 +13,11 @@ import java.util.ArrayList;
 public class NAPI {
     private final JSONBefhelsterung JSONBefhelsterung = new JSONBefhelsterung();
 
+    /**
+     * Fetch basic user inforfation (name, UUID)
+     * @return
+     * @throws IOException
+     */
     public ArrayList<User> getUserArrayList() throws IOException {
         return JSONBefhelsterung.parseJSONObjectToUserArrayList(JSONBefhelsterung.getBasicUserDataObj(), "general");
     }
