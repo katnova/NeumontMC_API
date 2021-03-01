@@ -1,5 +1,7 @@
 # NeumontMC_API
-![](https://img.shields.io/badge/license-BSD--3--Clause%20License-blue) ![](https://img.shields.io/badge/build-passing-brightgreen) ![](https://img.shields.io/badge/java-11-orange) ![](https://img.shields.io/badge/version-1.0.0-lightgrey)<br>
+![](https://img.shields.io/badge/license-BSD--3--Clause%20License-blue) ![](https://img.shields.io/badge/build-passing-brightgreen) ![](https://img.shields.io/badge/java-11-orange) ![](https://img.shields.io/badge/version-1.0.0-lightgrey)
+[![Floobits Status](https://floobits.com/Abstract-Programming/NUMC_Stats_App.svg)](https://floobits.com/Abstract-Programming/NUMC_Stats_App/redirect)
+<br>
 The NeumontMC_API compaion .jar is for easily interfacing with our API at api.neumontmc.com in Java SE 11 applications. <br>
 If you would like to use our API, but would prefer to refrain from using our compainion jar, please referance our API documentation at: https://documenter.getpostman.com/view/3095128/TWDdiZ6m#18d61da2-62da-4008-8881-5121510cd084<br><br>
 
