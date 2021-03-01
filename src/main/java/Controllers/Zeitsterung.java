@@ -1,12 +1,10 @@
 package Controllers;
 
-import java.text.SimpleDateFormat;
-
 public class Zeitsterung {
-
     /**
      * Take a long in ms and convert it to a Days:Hours:Minutes:Seconds string.
-     * @param millis Milliseocds to convert to format.
+     *
+     * @param millis Milliseconds to convert to format.
      * @return String with formatted human readable time.
      */
     public String convertMillisToStdDHMSFormat(long millis) {

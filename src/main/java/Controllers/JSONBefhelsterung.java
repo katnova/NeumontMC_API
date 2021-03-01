@@ -1,6 +1,7 @@
 package Controllers;
 
 import Models.User;
+import Models.mcmmo_user;
 import kong.unirest.HttpResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -76,6 +77,75 @@ public class JSONBefhelsterung {
      */
     public ArrayList<User> parseJSONArrayToUserArrayList(JSONArray jsonArray, String key) throws JSONException {
         return parseJSONToUserArray(true, jsonArray, null, key);
+    }
+
+    /**
+     * Take a JSONObject and extract the mcmmo information in keys uKey and sKey.
+     *
+     * @param jsonObject JSONObject containing keys uKey and sKey.
+     * @param uKey       String of key name for mcmmo_users.
+     * @param sKey       String of key name for mcmmo_skills.
+     * @return ArrayList<mcmmo_user> of mcmmo_users'
+     * @throws JSONException if JSON is or becomes malformed.
+     */
+    public ArrayList<mcmmo_user> parseJSONObjectToMcmmo_UserArrayList(JSONObject jsonObject, String uKey, String sKey) throws JSONException {
+        return parseJSONToMcmmo_UserArrayList(false, jsonObject, null, null, uKey, sKey);
+    }
+
+    /**
+     * Take a JSONObj or Two JSONArrays' and retrive mcmmo stats from them based on uKey and sKey values.
+     *
+     * @param hasJsonArray True if your going to pass two JSONArrays in, Aus for mcmmo_users, Ein for mcmmo_skills.
+     * @param jsonObject   JSONObject containing key values uKey and sKey.
+     * @param jsonArrayAus JSONArray for uKey.
+     * @param jsonArrayEin JSONArray for sKey.
+     * @param uKey         JSON key for jsonArrayofUsers.
+     * @param sKey         JSON key for jsonArrayofSkills.
+     * @return ArrayList<mcmmo_user> of mcmmo_users'.
+     */
+    private ArrayList<mcmmo_user> parseJSONToMcmmo_UserArrayList(boolean hasJsonArray, JSONObject jsonObject, JSONArray jsonArrayAus, JSONArray jsonArrayEin, String uKey, String sKey) {
+        ArrayList<mcmmo_user> tempList = new ArrayList<mcmmo_user>();
+        JSONArray jsonArrayOfUsers;
+        JSONArray jsonArrayOfSkills;
+        if (!hasJsonArray) {
+            jsonArrayOfUsers = getJSONArray(jsonObject, uKey);
+            jsonArrayOfSkills = getJSONArray(jsonObject, sKey);
+        } else {
+            jsonArrayOfUsers = jsonArrayAus;
+            jsonArrayOfSkills = jsonArrayEin;
+        }
+        for (int i = 0; i < jsonArrayOfUsers.length(); i++) {
+            JSONObject jau = jsonArrayOfUsers.getJSONObject(i);
+            JSONObject jas = jsonArrayOfSkills.getJSONObject(i);
+            int tmpId = jau.getInt("id");
+            int tmpUid = jas.getInt("user_id");
+            if (tmpId == tmpUid) {
+                tempList.add(new mcmmo_user(
+                        jau.getString("uuid"),
+                        jau.getString("user"),
+                        null,
+                        jau.getInt("id"),
+                        0.00,
+                        0,
+                        jau.getInt("lastlogin"),
+                        jas.getInt("taming"),
+                        jas.getInt("mining"),
+                        jas.getInt("woodcutting"),
+                        jas.getInt("repair"),
+                        jas.getInt("unarmed"),
+                        jas.getInt("herbalism"),
+                        jas.getInt("excavation"),
+                        jas.getInt("archery"),
+                        jas.getInt("swords"),
+                        jas.getInt("axes"),
+                        jas.getInt("acrobatics"),
+                        jas.getInt("fishing"),
+                        jas.getInt("alchemy"),
+                        jas.getInt("total")
+                ));
+            }
+        }
+        return tempList;
     }
 
     /**

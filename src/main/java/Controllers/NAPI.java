@@ -2,6 +2,7 @@ package Controllers;
 
 
 import Models.User;
+import Models.mcmmo_user;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class NAPI {
 
     /**
      * Fetch basic user inforfation (name, UUID)
+     *
      * @return
      * @throws IOException
      */
@@ -23,9 +25,19 @@ public class NAPI {
     }
 
     /**
-    * The class below is leftover from a test program, and was left to facilitate further testing in the future barring the need for modification.
-    * It is marked as Deprecated and it nor any methods uniquely accessible through it should NEVER be used in a production environment.
-    * */
+     * Get an array list of mcmmo_users.
+     *
+     * @return ArrayList<mcmmo_user> of mcmmo_users'.
+     * @throws IOException
+     */
+    public ArrayList<mcmmo_user> getUserArrayListWithMcmmoStats() throws IOException {
+        return JSONBefhelsterung.parseJSONObjectToMcmmo_UserArrayList(JSONBefhelsterung.getMcmmoStatsDataObj(), "mcmmo_users", "mcmmo_skills");
+    }
+
+    /**
+     * The class below is leftover from a test program, and was left to facilitate further testing in the future barring the need for modification.
+     * It is marked as Deprecated and it nor any methods uniquely accessible through it should NEVER be used in a production environment.
+     */
     @Deprecated
     public JSONBefhelsterung getJSONBefhelsterung() {
         return new JSONBefhelsterung();
