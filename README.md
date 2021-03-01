@@ -41,7 +41,8 @@ ArrayList<User_mcmmo> users = napi.getUserArrayListWithMcmmoStats();
 
 ### getORMUserStats()
 If you use this method, please refer to the code and JavaDocs, failure to do so will result in some very confusing errors.
-API call: `GET http://api.neumontmc.com/vZwei/user-stats`
+API call: `GET http://api.neumontmc.com/vZwei/user-stats` <br>
+Code example:
 ```java
         NAPI napi = new NAPI();
         ArrayList<Ustats> users;
