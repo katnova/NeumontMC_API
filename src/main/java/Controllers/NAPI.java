@@ -2,6 +2,7 @@ package Controllers;
 
 
 import Models.User;
+import Models.freeform_user;
 import Models.mcmmo_user;
 
 import java.io.IOException;
@@ -32,6 +33,11 @@ public class NAPI {
      */
     public ArrayList<mcmmo_user> getUserArrayListWithMcmmoStats() throws IOException {
         return JSONBefhelsterung.parseJSONObjectToMcmmo_UserArrayList(JSONBefhelsterung.getMcmmoStatsDataObj(), "mcmmo_users", "mcmmo_skills");
+    }
+
+
+    public ArrayList<freeform_user> getUserArrayWithAllStats(){
+        return null;
     }
 
     /**

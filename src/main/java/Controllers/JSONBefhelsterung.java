@@ -1,7 +1,10 @@
 package Controllers;
 
 import Models.User;
+import Models.deserializedJsonNodes;
 import Models.mcmmo_user;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import kong.unirest.HttpResponse;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -148,11 +151,34 @@ public class JSONBefhelsterung {
         return tempList;
     }
 
+    private void parseJSONBlocksToFreeFormUserArray(ArrayList<String> dataBlocks) {
+        for(String data : dataBlocks){
+            JSONArray tmpJsonArr = new JSONArray(data);
+        }
+    }
+
+    /**
+     * Deserialize /ustats API response to data-blocks appropriate for JSONArray processing.
+     *
+     * @param jsonObject full ustats response obj
+     * @return ArrayList containing JSON strings.
+     * @throws JsonProcessingException if an error is encountered processing the JSON.
+     */
+    private ArrayList<String> mapSerialUserStatsToDataBlocks(JSONObject jsonObject) throws JsonProcessingException {
+        ArrayList<String> dataBlocks = new ArrayList();
+        ObjectMapper mapper = new ObjectMapper();
+        deserializedJsonNodes deserializedNodes = mapper.readValue(jsonObject.toString(), deserializedJsonNodes.class);
+        new JSONArray(deserializedNodes.getStats().toString()).iterator().forEachRemaining(element -> {
+            dataBlocks.add(element.toString());
+        });
+        return dataBlocks;
+    }
+
     /**
      * Parse users in JSON arr or obj to UserArray.
      *
      * @param hasJsonArray Set to true if you are passing in a JSONArray, false if you are passing in a JSONObject.
-     * @param jsonArray    Vaild JSONArray containing a key matching String key.
+     * @param jsonArr      Vaild JSONArray containing a key matching String key.
      * @param jsonObject   Vaild JSONObject containing a key matching String key.
      * @param key          A vaild key contained in jsonObject or jsonArray.
      * @return ArrayList<User> Array of User objects.
@@ -182,12 +208,15 @@ public class JSONBefhelsterung {
      *
      * @param res A HttpResponse<String> obj containing a JSON body.
      * @return JSONObject containing the JSON body from res.
+     * @throws IllegalStateException if JSON obj is null.
      * @catch JSONException if res does not contain a JSON body or is malformed.
      */
     private JSONObject getJSONObject(HttpResponse<String> res) {
         try {
             JSONObject jsonObject = new JSONObject(res.getBody());
-            return jsonObject;
+            if (jsonObject != null)
+                return jsonObject;
+            throw new IllegalStateException("Null JSON obj.");
         } catch (JSONException er) {
             er.printStackTrace();
             throw new IllegalStateException("Could not parse JSON.");
