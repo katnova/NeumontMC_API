@@ -44,18 +44,18 @@ If you use this method, please refer to the code and JavaDocs, failure to do so 
 API call: `GET http://api.neumontmc.com/vZwei/user-stats` <br>
 Code example:
 ```java
-        NAPI napi = new NAPI();
-        ArrayList<Ustats> users;
-        try {
-            users = napi.getORMUserStats();
-            int i = 0;
-            for (Ustats u : users) {
-                System.out.println("User UUID #" + i + ": " + u.getUUID());
-                i++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+NAPI napi = new NAPI();
+ArrayList<Ustats> users;
+try {
+    users = napi.getORMUserStats();
+    int i = 0;
+    for (Ustats u : users) {
+        System.out.println("User UUID #" + i + ": " + u.getUUID());
+        i++;
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}
 ```
 
 <br><br>
