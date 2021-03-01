@@ -2,9 +2,8 @@ package Controllers;
 
 
 import Models.User;
-import Models.freeform_user;
-import Models.mcmmo_user;
-
+import Models.User_mcmmo;
+import Models.ustats.Ustats;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -28,16 +27,20 @@ public class NAPI {
     /**
      * Get an array list of mcmmo_users.
      *
-     * @return ArrayList<mcmmo_user> of mcmmo_users'.
+     * @return ArrayList<User_mcmmo> of mcmmo_users'.
      * @throws IOException
      */
-    public ArrayList<mcmmo_user> getUserArrayListWithMcmmoStats() throws IOException {
+    public ArrayList<User_mcmmo> getUserArrayListWithMcmmoStats() throws IOException {
         return JSONBefhelsterung.parseJSONObjectToMcmmo_UserArrayList(JSONBefhelsterung.getMcmmoStatsDataObj(), "mcmmo_users", "mcmmo_skills");
     }
 
-
-    public ArrayList<freeform_user> getUserArrayWithAllStats(){
-        return null;
+    /**
+     * Get ArrayList of ORM user stats.
+     * @return ArrayList of ORM user stats.
+     * @throws IOException If there is an error when processing the ArrayList.
+     */
+    public ArrayList<Ustats> getORMUserStats() throws IOException {
+        return JSONBefhelsterung.parseJSONBlocksMappableObjects(JSONBefhelsterung.mapSerialUserStatsToDataBlocks(JSONBefhelsterung.getUserStatsDataObj()));
     }
 
     /**

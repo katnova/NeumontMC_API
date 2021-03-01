@@ -1,6 +1,6 @@
 package Models;
 
-public class mcmmo_user extends User{
+public class User_mcmmo extends User{
     private int lastlogin;
     private int taming;
     private int mining;
@@ -17,7 +17,7 @@ public class mcmmo_user extends User{
     private int alchemy;
     private int total;
 
-    public mcmmo_user(String uuid, String username, String nickname, int mcmmo_forignKey, double Balance, int TotalPlayTime, int lastlogin, int taming, int mining, int woodcutting, int repair, int unarmed, int herbalism, int excavation, int archery, int swords, int axes, int acrobatics, int fishing, int alchemy, int total) {
+    public User_mcmmo(String uuid, String username, String nickname, int mcmmo_forignKey, double Balance, int TotalPlayTime, int lastlogin, int taming, int mining, int woodcutting, int repair, int unarmed, int herbalism, int excavation, int archery, int swords, int axes, int acrobatics, int fishing, int alchemy, int total) {
         super(uuid, username, nickname, mcmmo_forignKey, Balance, TotalPlayTime);
         this.lastlogin = lastlogin;
         this.taming = taming;
@@ -158,7 +158,7 @@ public class mcmmo_user extends User{
 
     @Override
     public String toString() {
-        return "\n---mcmmo_user----------------------------------- " +
+        return "\n---User_mcmmo----------------------------------- " +
                 "\n" + super.toString() +
                 "\n lastlogin                 : " + lastlogin +
                 "\n-MCMMO SKILL LEVELS:" +

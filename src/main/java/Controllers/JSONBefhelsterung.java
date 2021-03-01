@@ -1,8 +1,9 @@
 package Controllers;
 
 import Models.User;
-import Models.deserializedJsonNodes;
-import Models.mcmmo_user;
+import Models.User_mcmmo;
+import Models.DeserializedJsonNodes;
+import Models.ustats.Ustats;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kong.unirest.HttpResponse;
@@ -88,10 +89,10 @@ public class JSONBefhelsterung {
      * @param jsonObject JSONObject containing keys uKey and sKey.
      * @param uKey       String of key name for mcmmo_users.
      * @param sKey       String of key name for mcmmo_skills.
-     * @return ArrayList<mcmmo_user> of mcmmo_users'
+     * @return ArrayList<User_mcmmo> of mcmmo_users'
      * @throws JSONException if JSON is or becomes malformed.
      */
-    public ArrayList<mcmmo_user> parseJSONObjectToMcmmo_UserArrayList(JSONObject jsonObject, String uKey, String sKey) throws JSONException {
+    public ArrayList<User_mcmmo> parseJSONObjectToMcmmo_UserArrayList(JSONObject jsonObject, String uKey, String sKey) throws JSONException {
         return parseJSONToMcmmo_UserArrayList(false, jsonObject, null, null, uKey, sKey);
     }
 
@@ -104,10 +105,10 @@ public class JSONBefhelsterung {
      * @param jsonArrayEin JSONArray for sKey.
      * @param uKey         JSON key for jsonArrayofUsers.
      * @param sKey         JSON key for jsonArrayofSkills.
-     * @return ArrayList<mcmmo_user> of mcmmo_users'.
+     * @return ArrayList<User_mcmmo> of mcmmo_users'.
      */
-    private ArrayList<mcmmo_user> parseJSONToMcmmo_UserArrayList(boolean hasJsonArray, JSONObject jsonObject, JSONArray jsonArrayAus, JSONArray jsonArrayEin, String uKey, String sKey) {
-        ArrayList<mcmmo_user> tempList = new ArrayList<mcmmo_user>();
+    private ArrayList<User_mcmmo> parseJSONToMcmmo_UserArrayList(boolean hasJsonArray, JSONObject jsonObject, JSONArray jsonArrayAus, JSONArray jsonArrayEin, String uKey, String sKey) {
+        ArrayList<User_mcmmo> tempList = new ArrayList<User_mcmmo>();
         JSONArray jsonArrayOfUsers;
         JSONArray jsonArrayOfSkills;
         if (!hasJsonArray) {
@@ -123,7 +124,7 @@ public class JSONBefhelsterung {
             int tmpId = jau.getInt("id");
             int tmpUid = jas.getInt("user_id");
             if (tmpId == tmpUid) {
-                tempList.add(new mcmmo_user(
+                tempList.add(new User_mcmmo(
                         jau.getString("uuid"),
                         jau.getString("user"),
                         null,
@@ -151,23 +152,32 @@ public class JSONBefhelsterung {
         return tempList;
     }
 
-    private void parseJSONBlocksToFreeFormUserArray(ArrayList<String> dataBlocks) {
+    /**
+     * Create an ArrayList to contain ORM Ustats obj's.
+     * @param dataBlocks MUST be a valid dataBlock array of JSON.
+     * @return ArrayList of ORM Ustat obj's.
+     * @throws JsonProcessingException if there is an error processing the JSON data-blocks.
+     */
+    protected ArrayList<Ustats> parseJSONBlocksMappableObjects(ArrayList<String> dataBlocks) throws JsonProcessingException {
+        ArrayList<Ustats> ustats = new ArrayList<Ustats>();
+        ObjectMapper mapper = new ObjectMapper();
         for(String data : dataBlocks){
-            JSONArray tmpJsonArr = new JSONArray(data);
+            ustats.add(mapper.readValue(data, Ustats.class));
         }
+        return ustats;
     }
 
     /**
-     * Deserialize /ustats API response to data-blocks appropriate for JSONArray processing.
+     * Deserialize /ustats API response to data-blocks appropriate for parsing.
      *
      * @param jsonObject full ustats response obj
      * @return ArrayList containing JSON strings.
      * @throws JsonProcessingException if an error is encountered processing the JSON.
      */
-    private ArrayList<String> mapSerialUserStatsToDataBlocks(JSONObject jsonObject) throws JsonProcessingException {
+    protected ArrayList<String> mapSerialUserStatsToDataBlocks(JSONObject jsonObject) throws JsonProcessingException {
         ArrayList<String> dataBlocks = new ArrayList();
         ObjectMapper mapper = new ObjectMapper();
-        deserializedJsonNodes deserializedNodes = mapper.readValue(jsonObject.toString(), deserializedJsonNodes.class);
+        DeserializedJsonNodes deserializedNodes = mapper.readValue(jsonObject.toString(), DeserializedJsonNodes.class);
         new JSONArray(deserializedNodes.getStats().toString()).iterator().forEachRemaining(element -> {
             dataBlocks.add(element.toString());
         });
