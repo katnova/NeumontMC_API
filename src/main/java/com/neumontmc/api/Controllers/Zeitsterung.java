@@ -1,6 +1,8 @@
 package com.neumontmc.api.Controllers;
 
-public class Zeitsterung {
+import java.io.Serializable;
+
+public class Zeitsterung implements Serializable {
     /**
      * Take a long in ms and convert it to a Days:Hours:Minutes:Seconds string.
      *
