@@ -1,7 +1,7 @@
 package prog;
 
-import Controllers.NAPI;
-import Models.ustats.Ustats;
+import com.neumontmc.api.Controllers.NAPI;
+import com.neumontmc.api.Models.ustats.Ustats;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -13,8 +13,10 @@ public class test {
         try {
             users = napi.getORMUserStats();
             int i = 0;
-            for(Ustats u : users){
-                System.out.println("User UUID #"+i+": " + u.getUUID());
+            for (Ustats u : users) {
+                try {
+                    System.out.println("User Activity times joined #" + i + ": " + u.getContent().getActivity().getTimesLeft().getAmount().toString());
+                }catch (Exception e){}
                 i++;
             }
         } catch (IOException e) {
