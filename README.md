@@ -11,7 +11,7 @@ Add the dependancy to you pom.xml<br>
 <dependency>
   <groupId>com.numc</groupId>
   <artifactId>api</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 Install it using: 
