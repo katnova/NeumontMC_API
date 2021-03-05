@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class APIRemotes implements Serializable {
     //Remote server vars
-    private final String remote_protocol = "http://";
+    private final String remote_protocol = "https://";
     private final String remote_base = "api.neumontmc.com";
 
     //Compose remote URL
