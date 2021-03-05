@@ -18,7 +18,7 @@ Install it using:
 `mvn install`
 <br>
 <br>
-If you would like to install it manually, you can get the latest .jar from: https://github.com/Abstract-Programming/NeumontMC_API/releases/tag/v1.0%2C0 <br>
+If you would like to install it manually, you can get the latest .jar from: https://github.com/Abstract-Programming/NeumontMC_API/releases <br>
 
 # Using the companion
 Firstly, you will need to create a `NAPI` object: 
