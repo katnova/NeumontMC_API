@@ -1,5 +1,12 @@
 # NeumontMC_API
-[![CodeFactor](https://www.codefactor.io/repository/github/abstract-programming/neumontmc_api/badge)](https://www.codefactor.io/repository/github/abstract-programming/neumontmc_api) ![](https://img.shields.io/badge/license-BSD--3--Clause%20License-blue) ![](https://img.shields.io/badge/build-passing-brightgreen) ![](https://img.shields.io/badge/Java-1.8-blue) ![](https://img.shields.io/badge/Android%20API%20Compatibility-%20%3E26-blue) ![](https://img.shields.io/badge/version-1.0.0-lightgrey)
+[![CodeFactor](https://www.codefactor.io/repository/github/abstract-programming/neumontmc_api/badge)](https://www.codefactor.io/repository/github/abstract-programming/neumontmc_api) 
+![](https://img.shields.io/badge/license-BSD--3--Clause%20License-blue) 
+![](https://img.shields.io/badge/build-passing-brightgreen) 
+![](https://img.shields.io/badge/Java-1.8-blue) 
+![](https://img.shields.io/badge/Android%20API%20Compatibility-%20%3E26-blue) 
+![](https://img.shields.io/badge/version-1.0.0-lightgrey)
+![CodeSize](https://img.shields.io/github/languages/code-size/Abstract-Programming/NeumontMC_API)
+![Lines of code](https://img.shields.io/tokei/lines/github/Abstract-Programming/NeumontMC_API)
 <br>
 The NeumontMC_API compaion .jar is for easily interfacing with our API at api.neumontmc.com in Java 1.8 applications (recentlly changed from Java 11 for Android compatibility). <br>
 If you would like to use our API, but would prefer to refrain from using our compainion jar, please referance our API documentation at: https://documenter.getpostman.com/view/3095128/TWDdiZ6m<br><br>
