@@ -2,7 +2,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/abstract-programming/neumontmc_api/badge)](https://www.codefactor.io/repository/github/abstract-programming/neumontmc_api) 
 ![](https://img.shields.io/badge/Java-1.8-blue) 
 ![](https://img.shields.io/badge/Android%20API%20Compatibility-%20%3E26-blue) 
-![](https://img.shields.io/badge/version-1.0.0-lightgrey)
+![](https://img.shields.io/badge/version-1.0.1-lightgrey)
 ![CodeSize](https://img.shields.io/github/languages/code-size/Abstract-Programming/NeumontMC_API)
 ![Lines of code](https://img.shields.io/tokei/lines/github/Abstract-Programming/NeumontMC_API)
 <br>
