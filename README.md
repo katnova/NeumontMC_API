@@ -1,7 +1,6 @@
 # NeumontMC_API
 [![CodeFactor](https://www.codefactor.io/repository/github/abstract-programming/neumontmc_api/badge)](https://www.codefactor.io/repository/github/abstract-programming/neumontmc_api) 
 ![](https://img.shields.io/badge/license-BSD--3--Clause%20License-blue) 
-![](https://img.shields.io/badge/build-passing-brightgreen) 
 ![](https://img.shields.io/badge/Java-1.8-blue) 
 ![](https://img.shields.io/badge/Android%20API%20Compatibility-%20%3E26-blue) 
 ![](https://img.shields.io/badge/version-1.0.0-lightgrey)
