@@ -1,3 +1,5 @@
+Archived as the v1/v2/v3 endpoints have been restricted to the NAN.
+
 # NeumontMC_API
 [![CodeFactor](https://www.codefactor.io/repository/github/abstract-programming/neumontmc_api/badge)](https://www.codefactor.io/repository/github/abstract-programming/neumontmc_api) 
 ![](https://img.shields.io/badge/Java-1.8-blue) 
